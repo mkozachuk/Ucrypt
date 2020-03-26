@@ -36,6 +36,13 @@ public class A1Z26Cipher implements Cryptor {
     }
 
     @Override
+    public void printAlphabet() {
+        for(int i = 0; i < alphabet.length; i++) {
+            System.out.println(alphabet[i] + " -> " + cryptoAlphabet[i]);
+        }
+    }
+
+    @Override
     public void createNewCryptAlphabet(String alphabetDependency) { //alphabetDependency useless here
         int letterNum = 1;
         for(int i = 0; i < cryptoAlphabet.length; i++){

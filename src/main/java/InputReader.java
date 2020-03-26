@@ -8,7 +8,7 @@ public class InputReader {
     void userInput(){
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            userInputString = reader.readLine();
+            userInputString = reader.readLine().toUpperCase();
         }catch (IOException e){
             e.printStackTrace();
             throw new RuntimeException(e);
