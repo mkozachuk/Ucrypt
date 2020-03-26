@@ -26,13 +26,13 @@ public class CaesarСipher implements Cryptor {
             System.out.println("Not number");
         }
         for(int i = 0; i < alphabet.length; i++){
-            if (i <= alphabet.length - num - 1) {
+            if (num == 26 || num == 0){
+                cryptoAlphabet = alphabet.clone();
+            } else if (i <= alphabet.length - num - 1) {
                 cryptoAlphabet[i] = alphabet[i + num ];
-            }
-            else if(cryptoAlphabet[i - latterNum - 1].equals("Z")){
-                    cryptoAlphabet[i] = alphabet[latterNum];
-                    latterNum++;
-
+            } else if(cryptoAlphabet[i - latterNum - 1].equals("Z")) {
+                cryptoAlphabet[i] = alphabet[latterNum];
+                latterNum++;
             }
         }
 
