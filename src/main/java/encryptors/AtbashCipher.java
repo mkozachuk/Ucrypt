@@ -43,7 +43,6 @@ public class AtbashCipher implements HomophonicCryptor {
         for( int i = 0; i < alphabet.length; i++){
             cryptoAlphabet[i] = alphabet[alphabet.length - i - 1];
         }
-        System.out.println(Arrays.toString(cryptoAlphabet));
     }
 
     @Override
@@ -51,5 +50,13 @@ public class AtbashCipher implements HomophonicCryptor {
         for(int i = 0; i < alphabet.length; i++) {
             System.out.println(alphabet[i] + " -> " + cryptoAlphabet[i]);
         }
+    }
+
+    public String[] getAlphabet() {
+        return alphabet;
+    }
+
+    public String[] getCryptoAlphabet() {
+        return cryptoAlphabet;
     }
 }
