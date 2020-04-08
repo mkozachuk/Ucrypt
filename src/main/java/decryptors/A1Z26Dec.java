@@ -25,10 +25,15 @@ public class A1Z26Dec implements Decryptor {
     @Override
     public String decrypt(String userInputForDecrypt) {
         decryptedMessage = new ArrayList<String>();
-        char[] userInputChars = userInputForDecrypt.toCharArray();
+
+        String[] userInput;
+        String delimeter = " ";
+        userInput = userInputForDecrypt.split(delimeter);
+
+       // char[] userInputChars = userInputForDecrypt.toCharArray();
         cipher.createNewCryptAlphabet();
-        for(int i = 0; i <userInputForDecrypt.length(); i++){
-            decryptedMessage.add(String.valueOf(userInputChars[i]));
+        for(int i = 0; i <userInput.length; i++){
+            decryptedMessage.add(String.valueOf(userInput[i]));
             if(!decryptedMessage.get(i).equals(" ")) {
                 int currentIntIndex = Integer.parseInt(decryptedMessage.get(i)) - 1;
                 decryptedMessage.set(i, alphabet[currentIntIndex]);

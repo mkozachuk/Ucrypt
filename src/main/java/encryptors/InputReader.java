@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class InputReader {
     private String userInputString;
 
-    void userInput(){
+    private void userInput(){
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             userInputString = reader.readLine().toUpperCase();
@@ -18,6 +18,7 @@ public class InputReader {
     }
 
     public java.lang.String getUserInputString() {
+        userInput();
         return userInputString;
     }
 }
