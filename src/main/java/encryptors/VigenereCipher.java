@@ -1,5 +1,6 @@
+package encryptors;
+
 import java.util.Arrays;
-import java.util.List;
 
 public class VigenereCipher implements Cryptor {
 
@@ -56,11 +57,6 @@ public class VigenereCipher implements Cryptor {
         if(!crypted.isEmpty() && !crypted.equals("")) {
             System.out.println(crypted);
         }
-    }
-
-    @Override
-    public void createNewCryptAlphabet(String alphabetDependency) {
-
     }
 
 

@@ -1,29 +1,25 @@
+package encryptors;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MorseCode implements Cryptor {
-
+public class A1Z26Cipher implements Cryptor {
     private String crypted = "";
     private String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
             "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    private String[] cryptoAlphabet = {"•-", "-•••", "-•-•", "-••", "•", "••-•", "--•", "••••",
-    "••", "•---", "-•-", "•-••", "--", "-•", "---", "•--•", "--•-", "•-•",
-    "•••", "-", "••-", "•••-", "•--", "-••-", "-•--", "--••"};
-    private int[] numbers = {1,2,3,4,5,6,7,8,9,0};
-    private String[] morseNumbers = {"•----", "••---", "•••--", "••••-", "•••••", "-••••", "--•••",
-    "---••", "----•", "-----"};
+    private int[] cryptoAlphabet = new int[26];
     private List<String> cryptedMessage;
 
     @Override
     public String crypt(String userInputForCrypt) {
         cryptedMessage = new ArrayList<String>();
         char[] userInputChars = userInputForCrypt.toCharArray();
-        for(int i = 0; i < userInputForCrypt.length(); i++){
+        for(int i = 0; i <= userInputForCrypt.length() - 1; i++){
             cryptedMessage.add(String.valueOf(userInputChars[i]));
             if(!cryptedMessage.get(i).equals(" ")) {
                 int ind = Arrays.asList(alphabet).indexOf(cryptedMessage.get(i));
-                cryptedMessage.set(i, cryptoAlphabet[ind]);
+                cryptedMessage.set(i, String.valueOf(cryptoAlphabet[ind]));
             }
         }
 
@@ -42,14 +38,22 @@ public class MorseCode implements Cryptor {
     }
 
     @Override
-    public void createNewCryptAlphabet(String alphabetDependency) {
-    }
-
-    @Override
     public void printAlphabet() {
         for(int i = 0; i < alphabet.length; i++) {
             System.out.println(alphabet[i] + " -> " + cryptoAlphabet[i]);
         }
     }
 
+    public void createNewCryptAlphabet() {
+        int letterNum = 1;
+        for(int i = 0; i < cryptoAlphabet.length; i++){
+            cryptoAlphabet[i] = letterNum;
+            letterNum++;
+        }
+
+    }
+
+    public int[] getCryptoAlphabet() {
+        return cryptoAlphabet;
+    }
 }
