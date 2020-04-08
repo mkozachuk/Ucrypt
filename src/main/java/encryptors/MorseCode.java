@@ -9,12 +9,13 @@ public class MorseCode implements Cryptor {
     private String crypted = "";
     private String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
             "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    private String[] cryptoAlphabet = {"•-", "-•••", "-•-•", "-••", "•", "••-•", "--•", "••••",
-    "••", "•---", "-•-", "•-••", "--", "-•", "---", "•--•", "--•-", "•-•",
-    "•••", "-", "••-", "•••-", "•--", "-••-", "-•--", "--••"};
+    private String[] cryptoAlphabet = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....",
+    "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.",
+    "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
     private int[] numbers = {1,2,3,4,5,6,7,8,9,0};
-    private String[] morseNumbers = {"•----", "••---", "•••--", "••••-", "•••••", "-••••", "--•••",
-    "---••", "----•", "-----"};
+    //TODO add numbers to crypt
+    private String[] morseNumbers = {".----", "..---", "...--", "....-", ".....", "-....", "--...",
+    "---..", "----.", "-----"};
     private List<String> cryptedMessage;
 
     @Override
@@ -51,5 +52,11 @@ public class MorseCode implements Cryptor {
         }
     }
 
+    public String[] getCryptoAlphabet() {
+        return cryptoAlphabet;
+    }
 
+    public String[] getAlphabet() {
+        return alphabet;
+    }
 }
