@@ -31,8 +31,6 @@ public class VigenereCipher implements Cryptor {
         int u;
         int s;
 
-
-
         for (int i = 0; i < userInputLength/secretKeyLength + 1; i++ ) {
            longKeyString.append(getSecretKey());
         }
