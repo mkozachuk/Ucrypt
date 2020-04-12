@@ -2,7 +2,6 @@ package pgp;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,12 +9,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
-import java.security.Security;
 import java.util.Iterator;
 
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.CompressionAlgorithmTags;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openpgp.PGPCompressedData;
 import org.bouncycastle.openpgp.PGPEncryptedData;
 import org.bouncycastle.openpgp.PGPEncryptedDataGenerator;
@@ -54,7 +51,7 @@ import org.bouncycastle.util.io.Streams;
  */
 public class KeyBasedFileProcessor
 {
-    private static void decryptFile(
+    public static void decryptFile(
             String inputFileName,
             String keyFileName,
             char[] passwd,
@@ -71,7 +68,7 @@ public class KeyBasedFileProcessor
     /**
      * decrypt the passed in message stream
      */
-    private static void decryptFile(
+    public static void decryptFile(
             InputStream in,
             InputStream keyIn,
             char[]      passwd,
@@ -185,7 +182,7 @@ public class KeyBasedFileProcessor
         }
     }
 
-    private static void encryptFile(
+    public static void encryptFile(
             String          outputFileName,
             String          inputFileName,
             String          encKeyFileName,
@@ -199,7 +196,7 @@ public class KeyBasedFileProcessor
         out.close();
     }
 
-    private static void encryptFile(
+    public static void encryptFile(
             OutputStream    out,
             String          fileName,
             PGPPublicKey    encKey,
@@ -241,52 +238,4 @@ public class KeyBasedFileProcessor
         }
     }
 
-    public static void main(
-            String[] args)
-            throws Exception
-    {
-        Security.addProvider(new BouncyCastleProvider());
-
-//        if (args.length == 0)
-//        {
-//            System.err.println("usage: KeyBasedFileProcessor -e|-d [-a|ai] file [secretKeyFile passPhrase|pubKeyFile]");
-//            return;
-//        }
-        String s = "-d";
-        String s1 = "-ai";
-        String s2 = "pub.asc";
-        String s25 = "Pass";
-        String s3 = "textforcrypt.txt";
-        String z = "crypted.txt";
-
-
-
-        String a1 = "crypted.txt.asc";
-        String a2 = "secret.asc";
-        String a3 = "Pass";
-
-        if (s.equals("-e"))
-        {
-            if (s1.equals("-a") || s1.equals("-ai") || args[1].equals("-ia"))
-            {
-                encryptFile(z + ".asc", s3, s2, true, (s1.indexOf('i') > 0));
-            }
-            else if (args[1].equals("-i"))
-            {
-                encryptFile(args[2] + ".bpg", args[2], args[3], false, true);
-            }
-            else
-            {
-                encryptFile(args[1] + ".bpg", args[1], args[2], false, false);
-            }
-        }
-        else if (s.equals("-d"))
-        {
-            decryptFile(a1, a2, a3.toCharArray(), new File("newOutFile") + ".out");
-        }
-        else
-        {
-            System.err.println("usage: KeyBasedFileProcessor -d|-e [-a|ai] file [secretKeyFile passPhrase|pubKeyFile]");
-        }
-    }
 }

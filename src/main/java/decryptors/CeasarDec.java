@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CeasarDec implements Decryptor {
+public class CeasarDec implements CeasarDecryptor {
 
     private CaesarCipher cipher = new CaesarCipher();
 
@@ -21,11 +21,10 @@ public class CeasarDec implements Decryptor {
     private String [] cryptoAlphabet = cipher.getCryptoAlphabet();
     
 
-    @Override
-    public String decrypt(String userInputForDecrypt) {
+    public String decrypt(String userInputForDecrypt, String alphabetDependency) {
         decryptedMessage = new ArrayList<String>();
         char[] userInputChars = userInputForDecrypt.toCharArray();
-        cipher.createNewCryptAlphabet("3");
+        cipher.createNewCryptAlphabet(alphabetDependency);
         for(int i = 0; i <userInputForDecrypt.length(); i++){
             decryptedMessage.add(String.valueOf(userInputChars[i]));
             if(!decryptedMessage.get(i).equals(" ")) {
@@ -41,7 +40,7 @@ public class CeasarDec implements Decryptor {
         return decrypted;
     }
 
-    @Override
+
     public void printDecryptedResult() {
         if(!decrypted.isEmpty() && !decrypted.equals("")) {
             System.out.println(decrypted);
