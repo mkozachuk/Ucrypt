@@ -11,7 +11,6 @@ public class CaesarCipher implements HomophonicCryptor {
             "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
 
-
     private String[] cryptoAlphabet = new String[26];
     private List<String> cryptedMessage;
 
@@ -20,15 +19,15 @@ public class CaesarCipher implements HomophonicCryptor {
     public String crypt(String userInputForCrypt) {
         cryptedMessage = new ArrayList<String>();
         char[] userInputChars = userInputForCrypt.toCharArray();
-        for(int i = 0; i <userInputForCrypt.length(); i++){
+        for (int i = 0; i < userInputForCrypt.length(); i++) {
             cryptedMessage.add(String.valueOf(userInputChars[i]));
-            if(!cryptedMessage.get(i).equals(" ")) {
+            if (!cryptedMessage.get(i).equals(" ")) {
                 int ind = Arrays.asList(alphabet).indexOf(cryptedMessage.get(i));
                 cryptedMessage.set(i, cryptoAlphabet[ind]);
             }
         }
 
-        for(String letters : cryptedMessage) {
+        for (String letters : cryptedMessage) {
             crypted += letters;
         }
 
@@ -41,16 +40,16 @@ public class CaesarCipher implements HomophonicCryptor {
         int num = 3; // Default value
         try {
             num = Integer.parseInt(alphabetDependency);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
             System.out.println("Not number");
         }
-        for(int i = 0; i < alphabet.length; i++){
-            if (num == 26 || num == 0){
+        for (int i = 0; i < alphabet.length; i++) {
+            if (num == 26 || num == 0) {
                 cryptoAlphabet = alphabet.clone();
             } else if (i <= alphabet.length - num - 1) {
-                cryptoAlphabet[i] = alphabet[i + num ];
-            } else if(cryptoAlphabet[i - latterNum - 1].equals("Z")) {
+                cryptoAlphabet[i] = alphabet[i + num];
+            } else if (cryptoAlphabet[i - latterNum - 1].equals("Z")) {
                 cryptoAlphabet[i] = alphabet[latterNum];
                 latterNum++;
             }
@@ -60,14 +59,14 @@ public class CaesarCipher implements HomophonicCryptor {
 
     @Override
     public void printAlphabet() {
-        for(int i = 0; i < alphabet.length; i++) {
+        for (int i = 0; i < alphabet.length; i++) {
             System.out.println(alphabet[i] + " -> " + cryptoAlphabet[i]);
         }
     }
 
     @Override
     public void printCryptedResult() {
-        if(!crypted.isEmpty() && !crypted.equals("")) {
+        if (!crypted.isEmpty() && !crypted.equals("")) {
             System.out.println(crypted);
         }
     }

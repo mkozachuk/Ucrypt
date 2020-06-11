@@ -7,11 +7,11 @@ import java.io.InputStreamReader;
 public class InputReader {
     private String userInputString;
 
-    private void userInput(){
+    private void userInput() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             userInputString = reader.readLine().toUpperCase();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }

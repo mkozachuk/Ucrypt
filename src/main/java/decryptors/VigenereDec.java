@@ -10,7 +10,7 @@ public class VigenereDec implements DecryptorWithKey {
 
     private String[][] tabulaRecta;
 
-    private String decrypted ="";
+    private String decrypted = "";
 
     private char[] encryptedMessage;
 
@@ -33,22 +33,22 @@ public class VigenereDec implements DecryptorWithKey {
 
         int s;
 
-        for (int i = 0; i < userInputLength/secretKeyLength + 1; i++ ) {
+        for (int i = 0; i < userInputLength / secretKeyLength + 1; i++) {
             longKeyString.append(secretKey);
         }
 
-        for(int i = 0; i < longKey.length; i++){
+        for (int i = 0; i < longKey.length; i++) {
             longKey[i] = longKeyString.charAt(i);
         }
 
-        for (int i = 0; i < userInputLength; i++){
+        for (int i = 0; i < userInputLength; i++) {
             userInputChar = userInputForDecrypt.charAt(i);
             secretKeyChar = longKey[i];
             s = Arrays.asList(tabulaRecta[0]).indexOf(String.valueOf(secretKeyChar));
 
-            for(int j = 0; j < tabulaRecta.length; j++ ){
+            for (int j = 0; j < tabulaRecta.length; j++) {
                 int indx = Arrays.asList(tabulaRecta[j]).indexOf(String.valueOf(userInputChar));
-                if(indx == s){
+                if (indx == s) {
                     decryptedChar = tabulaRecta[j][0];
                     decrypted += decryptedChar;
                 }

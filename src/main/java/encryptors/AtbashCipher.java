@@ -15,15 +15,15 @@ public class AtbashCipher implements HomophonicCryptor {
     public String crypt(String userInputForCrypt) {
         cryptedMessage = new ArrayList<String>();
         char[] userInputChars = userInputForCrypt.toCharArray();
-        for(int i = 0; i <= userInputForCrypt.length() - 1; i++){
+        for (int i = 0; i <= userInputForCrypt.length() - 1; i++) {
             cryptedMessage.add(String.valueOf(userInputChars[i]));
-            if(!cryptedMessage.get(i).equals(" ")) {
+            if (!cryptedMessage.get(i).equals(" ")) {
                 int ind = Arrays.asList(alphabet).indexOf(cryptedMessage.get(i));
                 cryptedMessage.set(i, cryptoAlphabet[ind]);
             }
         }
 
-        for(String letters : cryptedMessage) {
+        for (String letters : cryptedMessage) {
             crypted += letters;
         }
 
@@ -32,7 +32,7 @@ public class AtbashCipher implements HomophonicCryptor {
 
     @Override
     public void printCryptedResult() {
-        if(!crypted.isEmpty() && !crypted.equals("")) {
+        if (!crypted.isEmpty() && !crypted.equals("")) {
             System.out.println(crypted);
         }
     }
@@ -40,14 +40,14 @@ public class AtbashCipher implements HomophonicCryptor {
     @Override
     public void createNewCryptAlphabet(String alphabetDependency) {
 
-        for( int i = 0; i < alphabet.length; i++){
+        for (int i = 0; i < alphabet.length; i++) {
             cryptoAlphabet[i] = alphabet[alphabet.length - i - 1];
         }
     }
 
     @Override
     public void printAlphabet() {
-        for(int i = 0; i < alphabet.length; i++) {
+        for (int i = 0; i < alphabet.length; i++) {
             System.out.println(alphabet[i] + " -> " + cryptoAlphabet[i]);
         }
     }

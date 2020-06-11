@@ -12,9 +12,9 @@ public class AtbashDec implements Decryptor {
 
     private List<String> decryptedMessage;
 
-    public String decrypted ="";
+    public String decrypted = "";
 
-    String [] alphabet = cipher.getAlphabet();
+    String[] alphabet = cipher.getAlphabet();
     String[] cryptoAlphabet = cipher.getCryptoAlphabet();
 
     @Override
@@ -22,15 +22,15 @@ public class AtbashDec implements Decryptor {
         decryptedMessage = new ArrayList<String>();
         char[] userInputChars = userInputForDecrypt.toCharArray();
         cipher.createNewCryptAlphabet("3");
-        for(int i = 0; i <userInputForDecrypt.length(); i++){
+        for (int i = 0; i < userInputForDecrypt.length(); i++) {
             decryptedMessage.add(String.valueOf(userInputChars[i]));
-            if(!decryptedMessage.get(i).equals(" ")) {
+            if (!decryptedMessage.get(i).equals(" ")) {
                 int ind = Arrays.asList(cryptoAlphabet).indexOf(decryptedMessage.get(i));
                 decryptedMessage.set(i, alphabet[ind]);
             }
         }
 
-        for(String letters : decryptedMessage) {
+        for (String letters : decryptedMessage) {
             decrypted += letters;
 
         }

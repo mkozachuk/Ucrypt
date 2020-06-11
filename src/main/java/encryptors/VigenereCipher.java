@@ -31,15 +31,15 @@ public class VigenereCipher implements Cryptor {
         int u;
         int s;
 
-        for (int i = 0; i < userInputLength/secretKeyLength + 1; i++ ) {
-           longKeyString.append(getSecretKey());
+        for (int i = 0; i < userInputLength / secretKeyLength + 1; i++) {
+            longKeyString.append(getSecretKey());
         }
 
-        for(int i = 0; i < longKey.length; i++){
+        for (int i = 0; i < longKey.length; i++) {
             longKey[i] = longKeyString.charAt(i);
         }
 
-        for (int i = 0; i < userInputLength; i++){
+        for (int i = 0; i < userInputLength; i++) {
             userInputChar = userInputForCrypt.charAt(i);
             secretKeyChar = longKey[i];
             u = Arrays.asList(tabulaRecta[0]).indexOf(String.valueOf(userInputChar));
@@ -52,7 +52,7 @@ public class VigenereCipher implements Cryptor {
 
     @Override
     public void printCryptedResult() {
-        if(!crypted.isEmpty() && !crypted.equals("")) {
+        if (!crypted.isEmpty() && !crypted.equals("")) {
             System.out.println(crypted);
         }
     }
@@ -61,15 +61,15 @@ public class VigenereCipher implements Cryptor {
     @Override
     public void printAlphabet() {
         System.out.println("Tabula Recta: ");
-        for(int i = 0; i < tabulaRecta.length; i++) {
+        for (int i = 0; i < tabulaRecta.length; i++) {
             System.out.println(Arrays.toString(tabulaRecta[i]));
         }
     }
 
-    public void createTabulaRecta(){
+    public void createTabulaRecta() {
         tabulaRecta = new String[26][26];
-        for (int i = 0; i < uniqueAlphabetLetters; i++){
-            for (int j = 0; j < uniqueAlphabetLetters; j++){
+        for (int i = 0; i < uniqueAlphabetLetters; i++) {
+            for (int j = 0; j < uniqueAlphabetLetters; j++) {
                 tabulaRecta[i][j] = alphabet[j + i];
             }
         }

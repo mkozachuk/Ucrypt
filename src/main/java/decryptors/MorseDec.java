@@ -12,7 +12,7 @@ public class MorseDec implements Decryptor {
 
     private List<String> decryptedMessage;
 
-    public String decrypted ="";
+    public String decrypted = "";
 
     private String[] cryptoAlphabet = cipher.getCryptoAlphabet();
 
@@ -29,15 +29,15 @@ public class MorseDec implements Decryptor {
         userInput = userInputForDecrypt.split(delimeter);
 
 
-        for(int i = 0; i <userInput.length; i++){
+        for (int i = 0; i < userInput.length; i++) {
             decryptedMessage.add(String.valueOf(userInput[i]));
-            if(!decryptedMessage.get(i).equals(" ")) {
+            if (!decryptedMessage.get(i).equals(" ")) {
                 int ind = Arrays.asList(cryptoAlphabet).indexOf(decryptedMessage.get(i));
                 decryptedMessage.set(i, alphabet[ind]);
             }
         }
 
-        for(String letters : decryptedMessage) {
+        for (String letters : decryptedMessage) {
             decrypted += letters;
 
         }
