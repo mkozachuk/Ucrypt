@@ -10,6 +10,6 @@ Available ciphers:
 <li> RSA
 
 
-![cmd interface]()
-![morse sample]()
-![a1z26 sample]()
+![cmd interface](https://github.com/mkozachuk/Ucrypt/raw/master/src/test/java/decryptors/u1.png)
+![morse sample](https://github.com/mkozachuk/Ucrypt/raw/master/src/test/java/decryptors/u2.png)
+![a1z26 sample](https://github.com/mkozachuk/Ucrypt/raw/master/src/test/java/decryptors/u3.png)
